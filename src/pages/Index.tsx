@@ -57,6 +57,31 @@ const Index = () => {
     }
   ];
 
+  const schedule = [
+    {
+      day: "Понедельник",
+      classes: [
+        { time: "15:00 - 16:30", group: "5-6 классы", teacher: "Анна Петрова", price: "2 500 ₽" },
+        { time: "17:00 - 18:30", group: "7-8 классы", teacher: "Дмитрий Соколов", price: "3 000 ₽" }
+      ]
+    },
+    {
+      day: "Среда",
+      classes: [
+        { time: "15:00 - 16:30", group: "9-11 классы", teacher: "Екатерина Волкова", price: "3 500 ₽" },
+        { time: "17:00 - 18:30", group: "Олимпиадная группа", teacher: "Екатерина Волкова", price: "4 000 ₽" }
+      ]
+    },
+    {
+      day: "Суббота",
+      classes: [
+        { time: "10:00 - 11:30", group: "5-6 классы", teacher: "Анна Петрова", price: "2 500 ₽" },
+        { time: "12:00 - 13:30", group: "7-8 классы", teacher: "Дмитрий Соколов", price: "3 000 ₽" },
+        { time: "14:00 - 15:30", group: "9-11 классы", teacher: "Дмитрий Соколов", price: "3 500 ₽" }
+      ]
+    }
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
@@ -220,7 +245,74 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contacts" className="py-16 px-4">
+      <section id="schedule" className="py-16 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">
+            Расписание и цены
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 text-lg">
+            Выберите удобное время для занятий
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {schedule.map((day, index) => (
+              <Card key={index} className="hover-scale">
+                <CardHeader className="bg-primary/5">
+                  <CardTitle className="text-center text-primary flex items-center justify-center gap-2">
+                    <Icon name="Calendar" className="w-5 h-5" />
+                    {day.day}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-6">
+                  <div className="space-y-4">
+                    {day.classes.map((classItem, classIndex) => (
+                      <div key={classIndex} className="border-l-4 border-primary/30 pl-4 py-2">
+                        <div className="flex items-center gap-2 text-primary font-semibold mb-1">
+                          <Icon name="Clock" className="w-4 h-4" />
+                          <span className="text-sm">{classItem.time}</span>
+                        </div>
+                        <div className="text-sm font-medium mb-1">{classItem.group}</div>
+                        <div className="text-xs text-muted-foreground mb-2">{classItem.teacher}</div>
+                        <div className="text-lg font-bold text-primary">{classItem.price}</div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
+            <Card className="text-center">
+              <CardHeader>
+                <Icon name="Users" className="w-10 h-10 text-primary mx-auto mb-2" />
+                <CardTitle className="text-lg">Групповые занятия</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">До 8 человек в группе</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardHeader>
+                <Icon name="User" className="w-10 h-10 text-primary mx-auto mb-2" />
+                <CardTitle className="text-lg">Индивидуальные</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">От 5 000 ₽ за занятие</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center">
+              <CardHeader>
+                <Icon name="Percent" className="w-10 h-10 text-primary mx-auto mb-2" />
+                <CardTitle className="text-lg">Первое занятие</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">Бесплатно!</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts" className="py-16 px-4 bg-secondary/30">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary">
             Контакты
