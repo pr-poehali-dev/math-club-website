@@ -128,6 +128,63 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center gap-2">
+              <Icon name="BookOpen" className="w-6 h-6 text-primary" />
+              <span className="font-bold text-lg text-primary">МатКружок</span>
+            </div>
+            <div className="hidden md:flex items-center gap-6">
+              <a 
+                href="#about" 
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              >
+                О кружке
+              </a>
+              <a 
+                href="#teachers" 
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              >
+                Преподаватели
+              </a>
+              <a 
+                href="#audience" 
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              >
+                Для кого
+              </a>
+              <a 
+                href="#schedule" 
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              >
+                Расписание
+              </a>
+              <a 
+                href="#testimonials" 
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              >
+                Отзывы
+              </a>
+              <Button 
+                size="sm"
+                onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Контакты
+              </Button>
+            </div>
+            <Button 
+              size="sm" 
+              variant="ghost"
+              className="md:hidden"
+              onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <Icon name="Menu" className="w-5 h-5" />
+            </Button>
+          </div>
+        </div>
+      </nav>
+
       <section 
         className="relative py-20 px-4 md:py-32 overflow-hidden"
         style={{
