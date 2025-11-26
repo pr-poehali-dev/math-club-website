@@ -82,6 +82,45 @@ const Index = () => {
     }
   ];
 
+  const testimonials = [
+    {
+      name: "Елена Смирнова",
+      role: "Мама ученика 7 класса",
+      text: "Сын занимается уже год. Математика из нелюбимого предмета стала любимой! Занял призовое место на городской олимпиаде. Спасибо преподавателям за профессионализм и индивидуальный подход.",
+      rating: 5
+    },
+    {
+      name: "Михаил",
+      role: "Ученик 10 класса",
+      text: "Готовлюсь к ЕГЭ с Екатериной Волковой. Занятия интересные, разбираем сложные задачи, которые в школе не проходят. Уверен, что сдам на высокий балл!",
+      rating: 5
+    },
+    {
+      name: "Ольга Петрова",
+      role: "Мама ученицы 6 класса",
+      text: "Дочь ходит с удовольствием! Анна Сергеевна умеет объяснить сложное простым языком. Оценки в школе улучшились, появился интерес к математике.",
+      rating: 5
+    },
+    {
+      name: "Александр Иванов",
+      role: "Папа ученика 9 класса",
+      text: "Отличный кружок! Небольшие группы, внимательные преподаватели. Сын стал более уверенным в математике, появилась мотивация участвовать в олимпиадах.",
+      rating: 5
+    },
+    {
+      name: "Анастасия",
+      role: "Ученица 8 класса",
+      text: "Занимаюсь в олимпиадной группе. Дмитрий Викторович показывает нестандартные подходы к решению задач. Благодаря кружку победила в региональной олимпиаде!",
+      rating: 5
+    },
+    {
+      name: "Татьяна Волкова",
+      role: "Мама ученика 5 класса",
+      text: "Ребёнок с нетерпением ждёт каждое занятие! Преподаватели создают дружескую атмосферу, где не страшно ошибиться. Математика перестала быть пугающим предметом.",
+      rating: 5
+    }
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
@@ -312,7 +351,43 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contacts" className="py-16 px-4 bg-secondary/30">
+      <section id="testimonials" className="py-16 px-4 bg-secondary/30">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">
+            Отзывы
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 text-lg">
+            Что говорят наши ученики и родители
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="hover-scale">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Icon name="User" className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-base">{testimonial.name}</CardTitle>
+                      <CardDescription className="text-xs">{testimonial.role}</CardDescription>
+                    </div>
+                  </div>
+                  <div className="flex gap-1">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Icon key={i} name="Star" className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                    ))}
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground italic">"{testimonial.text}"</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts" className="py-16 px-4">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary">
             Контакты
